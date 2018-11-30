@@ -2,3 +2,5 @@
 \.idea/
 
 AutomationQA\.iml
+
+*.class
