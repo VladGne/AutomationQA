@@ -2,6 +2,7 @@ package PracticeTestNG;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import org.testng.log4testng.Logger;
 
 import java.lang.reflect.Method;
@@ -81,7 +82,7 @@ public class Task1 {
 
     @Test(priority = 2, dataProvider = "setOfNumbers", groups = {"positiveTests"})
     public void testAbsoluteNumbers(Double number1, Double number2){
-        System.out.println("\tTest Absolute Numbers start with" + number1);
+        System.out.println("\tTest Absolute Numbers start with " + number1);
         Assert.assertFalse(number1.equals(Math.abs(number2)));
         System.out.println("\tTest Absolute Numbers end");
     }
@@ -89,7 +90,7 @@ public class Task1 {
 
     @Test(priority = 3, dataProvider = "setOfNumbers", groups = {"positiveTests"})
     public void testFindMax(Double number1, Double number2){
-        System.out.println("\tTest find max start with" + number1);
+        System.out.println("\tTest find max start with " + number1);
 
         Assert.assertTrue(number2.equals(Math.max(number1,number2)));
 
@@ -108,4 +109,16 @@ public class Task1 {
     }
 
 
+    @Test(priority = 5, dataProvider = "setOfNumbers", groups = {"failTests"})
+    public void testFindMin(Double number1, Double number2){
+        System.out.println("\tTest find min start with " + number1);
+
+        SoftAssert softAssert = new SoftAssert();
+
+        if(number1.equals(Math.min(number1,number2)))
+                softAssert.fail("Invalid minimum");
+
+        softAssert.assertAll();
+        System.out.println("\tTest find min end");
+    }
 }
