@@ -12,4 +12,17 @@
             <class name = "PracticeTestNG.Task1" />
         </classes>
     </test>
+    <test name = "test2">
+        <parameter name = "myPi" value="3.14"/>
+        <parameter name = "myE" value="2.71"/>
+        <groups>
+            <run>
+                <include name="failTests"/>
+                <include name="positiveTests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name = "PracticeTestNG.Task1" />
+        </classes>
+    </test>
 </suite>
